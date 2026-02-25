@@ -12,13 +12,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                bat 'mvn clean package'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t tejasmr/java-app:1.0 .'
+                bat 'docker build -t tejasmr/java-app:1.0 .'
             }
         }
 
@@ -29,7 +29,7 @@ pipeline {
                     usernameVariable: 'DOCKER_USER',
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
-                    sh '''
+                    bat '''
                     echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
                     docker push tejasmr/java-app:1.0
                     '''
