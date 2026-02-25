@@ -8,11 +8,7 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/tejasmr07/jenkins'
-            }
-        }
+       
 
         stage('Build') {
             steps {
